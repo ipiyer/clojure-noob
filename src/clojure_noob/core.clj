@@ -5,9 +5,10 @@
            )
   ;; (:require [clj-kafka.zk :as zk])
   (:require [clojure.string :as str])
-  (:import (org.apache.kafka.common.serialization Deserializer
-                                                  StringDeserializer)
-           ;; (org.apache.spark.streaming.kafka KafkaUtils)
+  (:import (org.apache.spark.streaming StreamingContext)
+           (org.apache.spark.streaming.kafka010 KafkaUtils)
+           (org.apache.spark.streaming.api.java JavaStreamingContext)
+           (org.apache.spark.streaming Duration)
            )
   (:gen-class))
 
@@ -23,6 +24,17 @@
   "This is where the magic happens."
   [& args]
   
+  (def cc (-> (conf/spark-conf)
+             (conf/app-name "kafka_direct_stream")
+             (conf/master master)
+             ))
+  
+  (def scc (JavaStreamingContext. cc (Duration. 1000)))
+  ;; (def scc (-> (JavaStreamingContext.)
+  ;;              (c)))
+;;  (def stream ())
+  
+
   (let [c (-> (conf/spark-conf)
               (conf/master master)
               (conf/app-name "adapters")

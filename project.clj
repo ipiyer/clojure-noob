@@ -16,7 +16,7 @@
                  [yieldbot/flambo "0.8.2"]
                  [org.apache.spark/spark-streaming_2.11 "2.2.2"]
                  [org.apache.spark/spark-streaming-kafka-0-10_2.11 "2.2.2"]
-                 [org.apache.spark/spark-streaming-kafka-0-10-assembly_2.10 "2.2.2"]
+                 [org.apache.spark/spark-streaming-kafka-0-10-assembly_2.11 "2.2.2"]
                  [clj-kafka "0.3.4"]
                ]
               }})
